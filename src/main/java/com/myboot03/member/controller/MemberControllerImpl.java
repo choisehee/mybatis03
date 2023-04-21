@@ -59,11 +59,13 @@ public class MemberControllerImpl implements MemberController{
 //		System.out.println(viewName);
 		
 		
-		//String viewName =(String) request.getAttribute("viewName");
-//		logger.debug("viewName: "+ viewName);
+		String viewName =(String) request.getAttribute("viewName");
+		logger.debug("viewName: "+ viewName);
 		List<MemberVO> membersList = memberService.listMembers();
-		//ModelAndView mav = new ModelAndView(viewName);
-		ModelAndView mav = new ModelAndView("/member/listMembers");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+//		ModelAndView mav = new ModelAndView("/member/listMembers"); //타일즈 사용전에 사용했음
+		
 		mav.addObject("membersList", membersList);
 		return mav;
 	}
